@@ -5,13 +5,9 @@
 
 
 <%
-
-
-request.setCharacterEncoding("UTF-8");  //한글이 깨질수도 있어서 UTF-8로 인코딩 처리
-String fail = request.getParameter("fail");  // name이 id인 데이터를 문자열 id 변수에 참조 
-
-
+	String fail = request.getParameter("fail");  //
 %>
+
 <head>
 
     <meta charset="utf-8">

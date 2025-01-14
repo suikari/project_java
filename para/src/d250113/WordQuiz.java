@@ -30,13 +30,12 @@ public class WordQuiz {
 		v.add(new Word("example", "보기"));
 		v.add(new Word("eye", "눈"));
 		v.add(new Word("statue", "조각상"));
-		
 
 	}
 	
 	public static void main(String[] args) {
 		ArrayList<String> awnslist = new ArrayList<>();
-
+		
 		
 		Random rnd = new Random();
 		WordQuiz quiz = new WordQuiz("");
