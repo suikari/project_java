@@ -10,6 +10,7 @@ import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class MyFrame extends JFrame implements ActionListener {
@@ -29,6 +30,9 @@ public class MyFrame extends JFrame implements ActionListener {
 	
 	
 	public void DrawBlocks() {		
+		p.removeAll();
+		p.revalidate();
+
 		this.jpArray = new JButton[maze.length][maze[0].length];
 		
 		for (int i = 0; i < maze.length; i++) {
@@ -36,7 +40,8 @@ public class MyFrame extends JFrame implements ActionListener {
 				jpArray[i][j] = new JButton(""+maze[i][j]);
 				jpArray[i][j].setSize(100,100);
 				jpArray[i][j].setLocation(j*100, i*100);
-				
+				jpArray[i][j].addActionListener(this);//이벤트메소드호출
+
 				if(maze[i][j] == 0) {
 					jpArray[i][j].setBackground(Color.black);
 				}else if (maze[i][j] == 2 || maze[i][j] == 3) {
@@ -53,7 +58,33 @@ public class MyFrame extends JFrame implements ActionListener {
 		add(p);
 
 	}
+	
+	public void SetBlocks(int x, int y) {
 		
+		if ( maze[x][y] == 0 ) {
+			for (int i = 0; i < maze.length; i++) {
+				for (int j = 0; j < maze[0].length; j++) {
+					
+					
+						 if ( x <= i+1 && x >= i-1  ) {  
+							 if ( y <= j+1 && y >= j-1  ) {  
+								 if ( maze[i][j] == 2 ) {
+									 maze[i][j] = 0;
+									 maze[x][y] = 2;
+								 }
+							 }
+						 }					
+					
+				}
+			}
+			
+			DrawBlocks();
+		}  else if (maze[x][y] == 3) {
+			 JOptionPane.showMessageDialog(null, "도착!");
+		}
+		
+	}
+	
 	public MyFrame() {
 	  //super("프레임 연습");
 	  setTitle("maze");
@@ -67,19 +98,19 @@ public class MyFrame extends JFrame implements ActionListener {
 		 * FlowLayout());
 		 */
 	  
-	  b1 = new JButton("OK");
+	  /* b1 = new JButton("OK");
 	  b2 = new JButton("Cancel");
-	
 
-		/*
-		 * p.add(b1); p.add(b2); p.setLayout(new FlowLayout());
-		 */
-	  
-
-	  
 	  b1.addActionListener(this);//이벤트메소드호출
 	  b2.addActionListener(this);//이벤트메소드호출
 
+
+	
+	 * p.add(b1); p.add(b2); p.setLayout(new FlowLayout());
+	 */
+	  
+
+	  
 
 	  
 	  setSize(1100,900);
@@ -91,17 +122,17 @@ public class MyFrame extends JFrame implements ActionListener {
 
 
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==b1) {
-			Random rnd = new Random();
-			
-			p.setBackground(Color.YELLOW);
-			p.add(new JLabel(""+(rnd.nextInt(65)+1)));
-			p.revalidate();
-			//System.out.println("color");
-			
-		}else if(e.getSource()==b2) {
-			p.setBackground(Color.pink);
-		}
+		JButton btn = (JButton) e.getSource();
+		//btn.get
+		
+//		for (int i = 0; i < maze.length; i++) {
+//			for (int j = 0; j < maze[0].length; j++) {
+//				if(e.getSource()==jpArray[i][j]) {
+//					SetBlocks(i,j);
+//					//System.out.println(i+","+j);
+//				}
+//			}
+//		}
 	}
 
 
