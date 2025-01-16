@@ -37,17 +37,23 @@ public class MyFrame extends JFrame implements ActionListener {
 		
 		for (int i = 0; i < maze.length; i++) {
 			for (int j = 0; j < maze[0].length; j++) {
-				jpArray[i][j] = new JButton(""+maze[i][j]);
+				jpArray[i][j] = new JButton(i+","+j);
 				jpArray[i][j].setSize(100,100);
 				jpArray[i][j].setLocation(j*100, i*100);
 				jpArray[i][j].addActionListener(this);//이벤트메소드호출
 
 				if(maze[i][j] == 0) {
 					jpArray[i][j].setBackground(Color.black);
+					jpArray[i][j].setForeground(Color.black);
+
 				}else if (maze[i][j] == 2 || maze[i][j] == 3) {
 					jpArray[i][j].setBackground(Color.yellow);
+					jpArray[i][j].setForeground(Color.yellow);
+
 				} else {
 					jpArray[i][j].setBackground(Color.white);
+					jpArray[i][j].setForeground(Color.white);
+
 				}
 				p.add(jpArray[i][j]);
 			}
@@ -65,7 +71,7 @@ public class MyFrame extends JFrame implements ActionListener {
 			for (int i = 0; i < maze.length; i++) {
 				for (int j = 0; j < maze[0].length; j++) {
 					
-					
+					   if (!( x == i+1 && y == j+1) && ! (x == i-1 && y == j-1) && ! (x == i-1 && y == j+1) && ! (x == i+1 && y == j-1) ) {
 						 if ( x <= i+1 && x >= i-1  ) {  
 							 if ( y <= j+1 && y >= j-1  ) {  
 								 if ( maze[i][j] == 2 ) {
@@ -74,7 +80,7 @@ public class MyFrame extends JFrame implements ActionListener {
 								 }
 							 }
 						 }					
-					
+					   }
 				}
 			}
 			
@@ -123,6 +129,13 @@ public class MyFrame extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		JButton btn = (JButton) e.getSource();
+		
+		String x = btn.getText().split(",")[0];
+		String y = btn.getText().split(",")[1];
+		
+		if ( !x.equals("") && !y.equals("") ) {
+			SetBlocks(Integer.parseInt(x),Integer.parseInt(y));
+		}
 		//btn.get
 		
 //		for (int i = 0; i < maze.length; i++) {

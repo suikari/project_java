@@ -1,0 +1,74 @@
+
+
+
+중고 or 판매플랫폼(쿠팡, 옥션 등 홈쇼핑식 다나와x)
+
+
+물건 판매 등록시 사전조사x > 사이트에 같은 물건 크롤링하여 표시 (최근거래가, 거래완료 물품 등등 세부설정 가능 )
+
+
+
+개인형 홈페이지 or 개인형 쇼핑몰 폼 선택가능 (관리자 권한으로)
+
+
+
+
+select * from enrol;
+
+
+select * from student;
+
+select * from subject;
+
+
+select distinct s.stu_name , j.sub_name , j.sub_prof 
+from student s, subject j,  enrol e 
+where (s.stu_no = e.stu_no and e.sub_no = j.sub_no);
+
+select * from student where stu_name = '옥한빛';
+select * from student where stu_dept = '기계' Or stu_gender = 'F';
+
+select * from student where stu_height between 50 and 170;
+
+delete from student where stu_name = '이태연';
+
+update  student
+set stu_weight = stu_weight+1
+where stu_weight between 50 and 70;
+
+insert into student (stu_no,stu_name,stu_dept)
+values ('20161230','홍길동','전기전자')
+
+--내장함수 문자  , as , upper , lower , initcap || instr  substr  L/RPAD
+
+select stu_no, stu_name 이름 , upper(stu_dept) 학과
+from student; 
+
+
+select upper('EDdsewT Trhrtey') , lower('EDdsewT Trhrtey') , initcap('EDdsewT trTTrtey') from dual
+
+
+select *
+from student
+where  substr(stu_no, 3,2)  = '15';
+
+
+select instr('950626-1234567','-')
+from dual;
+
+select LPAD(stu_no,10,'*') , RPAD(stu_no,10,'*')
+from student;
+
+select * from T_EMP ;
+
+select RPAD(substr(empno,1,4),8,'*') 사번 ,substr(name,2,3) name, birthday
+from t_emp;
+
+
+select RPAD(substr(empno,1,4),8,'*') 사번 , '*' || substr(name,2,3) 이름 , birthday
+from t_emp;
+
+select rpad(substr(tel,1,instr(tel,'-')),length(tel),'*') from t_emp;
+
+
+

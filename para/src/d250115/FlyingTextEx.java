@@ -17,9 +17,11 @@ public class FlyingTextEx extends JFrame {
 	private JLabel la = new JLabel("HELLO");
 
 	public FlyingTextEx() {
+		
 		setTitle("상,하,좌,우키를이용하여텍스트움직이기");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container c = getContentPane();
+		
 		c.setLayout(null);
 		c.addKeyListener(new MyKeyListener());
 		la.setLocation(50,50);
@@ -27,8 +29,10 @@ public class FlyingTextEx extends JFrame {
 		c.add(la);
 		setSize(300,300);
 		setVisible(true);
+		
 		c.setFocusable(true);
 		c.requestFocus();
+		
 		c.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				Component com = (Component)e.getSource();

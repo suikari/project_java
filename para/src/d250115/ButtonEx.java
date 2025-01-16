@@ -9,19 +9,25 @@ import javax.swing.JFrame;
 
 public class ButtonEx extends JFrame{
 	public ButtonEx() {
+		
 		setTitle("이미지버튼예제");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		Container c = getContentPane();
 		c.setLayout(new FlowLayout());
+		
 		ImageIcon normalIcon= new ImageIcon("image/normal.png");
-		ImageIcon rolloverIcon= new ImageIcon("image/taggle.png");
+		ImageIcon rolloverIcon= new ImageIcon("image/toggle.png");
 		ImageIcon pressedIcon= new ImageIcon("image/push.png");
+		
 		JButton btn= new JButton("call~~", normalIcon);
-		btn.setPressedIcon(pressedIcon);
 		btn.setRolloverIcon(rolloverIcon);
+		btn.setPressedIcon(pressedIcon);
+		
 		c.add(btn);
 		setSize(250,150);
 		setVisible(true);
+		
 	}
 	public static void main(String [] args) {
 		new ButtonEx();
