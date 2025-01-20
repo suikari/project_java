@@ -2,13 +2,15 @@ package d250117;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DBClass {
 	
-	Connection conn;
-	Statement stmt = null;
+	public Connection conn;
+	public Statement stmt = null;
+	public ResultSet rs = null;
 	
 	public DBClass() {
 		// TODO Auto-generated constructor stub

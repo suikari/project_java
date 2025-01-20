@@ -5,9 +5,6 @@
 <mapper namespace="com.example.test1.mapper.UserMapper">
 	<select id="userLogin" parameterType="hashmap" resultType="com.example.test1.model.User">
 		SELECT * FROM users WHERE uid = #{userId} AND upw = #{pwd}</select>
-		
-		
-
 </mapper>
 
 
