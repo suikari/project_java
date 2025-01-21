@@ -60,6 +60,28 @@ public class Review_ListMap2 {
 			System.out.println(list.get(i).get("age"));
 		}
 		
+		
+		
+		System.out.print("주소를 수정할 사람 이름 입력 : ");
+		String name = sc.next(); 
+		
+		int index = -1;
+		
+		for (int i=0;i<list.size();i++) {
+			if(list.get(i).get("name").equals(name)) {
+				index = i;
+			}
+		}
+		
+		if (index > -1 ) {
+			System.out.print("수정할 주소를 입력하세요 : ");
+			String addrr = sc.next();
+			list.get(index).put("addr",  addrr); 
+		} else {
+			System.out.println("해당 사람이 존재하지 않습니다.");
+		}				
+		
+		System.out.println(list);
 	}
 	
 }
