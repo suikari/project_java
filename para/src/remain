@@ -72,3 +72,76 @@ select rpad(substr(tel,1,instr(tel,'-')),length(tel),'*') from t_emp;
 
 
 
+
+select deptno , ename from emp  
+group by deptno , ename ,sal
+having sal in (select max(sal) from emp group by deptno );
+
+====================================================================
+
+select deptno, ename, (select max(sal) from emp ee where ee.deptno = e.deptno) 
+from emp e
+where e.sal = (select max(sal) from emp ee where ee.deptno = e.deptno);
+
+====================================================================
+select * from emp order by deptno;
+
+
+
+
+
+ select lower(ename) from emp;
+
+select replace(ename,'SMITH','JOHN') from emp;
+
+select length(JOB) from emp where job = 'SALESMAN';
+
+select  INITCAP(ename) from emp;
+
+select substr(ename,length(ename)-2,length(ename)) from emp;
+
+select ename || '(' || job || ')'  from emp;
+
+select  ename from emp where ename like '%A%';
+
+
+select sal * 1.1 from emp;
+
+select avg(sal) from emp where sal > 1500;
+
+select deptno, sum(sal) from emp group by deptno;
+
+select avg(sal) from emp where sal > 1500;
+
+select sal + nvl(comm,0) from emp;
+
+
+select deptno , ename from emp 
+group by deptno , ename ,sal
+having sal in (select max(sal) from emp group by deptno );
+
+select deptno, ename, (select max(sal) from emp ee where ee.deptno = e.deptno) 
+from emp e
+where e.sal = (select max(sal) from emp ee where ee.deptno = e.deptno);
+
+
+select sal from emp order by sal;
+
+
+select to_char( hiredate , 'yy') from emp;
+
+select ename from emp where  to_char( hiredate , 'yyyymmdd') >= '19810101';
+
+select count(*) , to_char( hiredate , 'yy') from emp group by to_char( hiredate , 'yy');
+
+select count(*) , to_char( hiredate , 'mm') from emp group by to_char( hiredate , 'mm');
+
+
+select ename from emp where  to_char( hiredate , 'yyyymmdd') < to_char( SYSDATE , 'yyyymmdd');
+
+select ename, hiredate from emp order by to_char( hiredate , 'mm') , to_char( hiredate , 'dd');
+
+select ename, hiredate from emp where  to_char( hiredate , 'yyyymmdd') >= '19810501';
+
+
+

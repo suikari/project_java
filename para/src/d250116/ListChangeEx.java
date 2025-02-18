@@ -36,7 +36,7 @@ public class ListChangeEx extends JFrame{
 				// TODO Auto-generated method stub
 				JTextField namet = (JTextField)e.getSource();
 				String name = namet.getText();
-				nameList.
+				System.out.print(name);
 			}
 			
 		});

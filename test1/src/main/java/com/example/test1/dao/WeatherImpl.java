@@ -91,17 +91,7 @@ public class WeatherImpl {
             
         }
         
-		
-
-		
-        //jsonMap = (HashMap<String, Object>) ((HashMap<String,Object>) ((HashMap<String,Object>) jsonObj.get("response")).get("body")).get("items");
-        
-        
         System.out.println(resultList);
-
-        //System.out.println(jsonMap);
-
-        
         		
         rd.close();
         conn.disconnect();
